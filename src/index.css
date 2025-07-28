@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+@theme {
+  --color-verde-50: #f0fdf4;
+  --color-verde-100: #dcfce7;
+  --color-verde-200: #bbf7d0;
+  --color-verde-300: #86efac;
+  --color-verde-400: #4ade80;
+  --color-verde-500: #22c55e;
+  --color-verde-600: #16a34a;
+  --color-verde-700: #15803d;
+  --color-verde-800: #166534;
+  --color-verde-900: #14532d;
+
+  --color-tierra-50: #fdf8f6;
+  --color-tierra-100: #f2e8e5;
+  --color-tierra-200: #eaddd7;
+  --color-tierra-300: #e0cfc5;
+  --color-tierra-400: #d2bab0;
+  --color-tierra-500: #bfa094;
+  --color-tierra-600: #a18072;
+  --color-tierra-700: #977669;
+  --color-tierra-800: #846358;
+  --color-tierra-900: #43302b;
+
+  --color-cielo-50: #f0f9ff;
+  --color-cielo-100: #e0f2fe;
+  --color-cielo-200: #bae6fd;
+  --color-cielo-300: #7dd3fc;
+  --color-cielo-400: #38bdf8;
+  --color-cielo-500: #0ea5e9;
+  --color-cielo-600: #0284c7;
+  --color-cielo-700: #0369a1;
+  --color-cielo-800: #075985;
+  --color-cielo-900: #0c4a6e;
+
+  --color-dorado-50: #fffbeb;
+  --color-dorado-100: #fef3c7;
+  --color-dorado-200: #fde68a;
+  --color-dorado-300: #fcd34d;
+  --color-dorado-400: #fbbf24;
+  --color-dorado-500: #f59e0b;
+  --color-dorado-600: #d97706;
+  --color-dorado-700: #b45309;
+  --color-dorado-800: #92400e;
+  --color-dorado-900: #78350f;
+
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@layer base {
+  html {
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  body {
+    @apply bg-gradient-to-br from-verde-50 to-cielo-50 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-gray-100;
+  }
+}
+
+@layer components {
+  /* Estilos para popups de Leaflet */
+  .custom-popup .leaflet-popup-content-wrapper {
+    @apply bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  .custom-popup .leaflet-popup-tip {
+    @apply bg-white dark:bg-gray-800;
+  }
+
+  /* Contenedor del mapa Leaflet */
+  .leaflet-container {
+    height: 100%;
+    width: 100%;
+    border-radius: 0.5rem;
+    background: #ffffff;
+  }
+
+  .dark .leaflet-container {
+    background: #374151;
+  }
+
+  /* Estilos para controles de Leaflet */
+  .leaflet-control-zoom a {
+    @apply bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200;
+    border-color: #d1d5db;
+  }
+
+  .dark .leaflet-control-zoom a {
+    border-color: #4b5563;
+  }
+
+  .leaflet-control-zoom a:hover {
+    @apply bg-gray-50 dark:bg-gray-600;
+  }
+
+  .leaflet-control-attribution {
+    @apply bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300;
+    opacity: 0.8;
+  }
+
+  /* Scrollbar personalizado */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Scrollbars normales */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-800;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400 dark:bg-gray-500;
+  }
+
+  /* Animaciones personalizadas */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.5s ease-out;
+  }
+
+  /* Efectos de hover para cards */
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+}
